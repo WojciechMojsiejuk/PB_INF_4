@@ -4,10 +4,7 @@
 
 int main(int argc, char* argv[])
 {
-	struct stat statRes;
 	#ifdef _WIN32
-    /*Code was originally written on MacOS, unix based system.
-     Therefore there might be some problems in Windows OS */
     printf("Twoj system nie jest obecnie wspierany\n");
 	#endif
 	if(argc==1)
@@ -16,18 +13,20 @@ int main(int argc, char* argv[])
 		return -1;
 	}
 	int i=1;
+	FILE* plik;
 	for(;i<argc;i++)
 		{
-			if(stat(argv[i], &statRes) < 0)
-				return 1;
-			mode_t bits = statRes.st_mode;
-			if((bits & S_IRUSR) == 0)
+			if((plik = fopen(argv[i], "r")) == NULL)
 			{
-				printf("Nie masz uprawnien do tego pliku\n");
-    			return 2;
+				perror(argv[i]);
+				return 1;
 			}
-			printf("Plik: %d\n",i);
-			read(argv[i]);
+			else
+			{
+				printf("Plik: %d\n",i);
+				read(plik);
+			}
+			
 		}
 	return 0;
 

@@ -1,1 +1,1 @@
-int read(char *plik[]);
+void read(FILE* text);
