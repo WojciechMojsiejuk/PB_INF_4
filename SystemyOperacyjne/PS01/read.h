@@ -1,1 +1,1 @@
-void read(FILE* text);
+void readFile(int text);

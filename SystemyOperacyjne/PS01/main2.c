@@ -1,11 +1,8 @@
 #include <stdio.h>
+#include <sys/stat.h>
+#include <string.h>
 #include <stdlib.h>
 #include "read.h"
-#include <fcntl.h>
-#include <sys/stat.h>
-#include <sys/types.h>
-#include <unistd.h>
-#include <string.h>
 
 int main(int argc, char* argv[])
 {
@@ -25,16 +22,18 @@ int main(int argc, char* argv[])
 			if (plik == -1) 
 			{
  				/* The open failed.  Print an error message and exit.  */ 
- 				perror(argv[i]); 
+ 				fprintf (stderr, "error opening file: %s\n", strerror (errno)); 
   				exit (EXIT_FAILURE);
   			}
 			else
 			{
 				printf("Plik: %d\n",i);
 				read(plik);
-				close(plik);
 			}
 			
 		}
-	return 0; 	
+	return 0; 
+	
+	 
+	
 } 
