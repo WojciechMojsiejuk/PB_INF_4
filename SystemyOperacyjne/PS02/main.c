@@ -36,14 +36,6 @@ int main(void) {
                 exit(EXIT_FAILURE);
         }
         
-
-        
-        /* Change the current working directory */
-        if ((chdir("/")) < 0) {
-                /* Log the failure */
-                exit(EXIT_FAILURE);
-        }
-        
         /* Close out the standard file descriptors */
         close(STDIN_FILENO);
         //close(STDOUT_FILENO);
@@ -64,11 +56,10 @@ int main(void) {
             /* If we got a good PID, then
            we can exit the parent process. */
             if (pid2 == 0) {
-                char* arr[] = {"echo", "Wojtek", NULL};
-                execv("/bin/bash", arr);
-                /* wait 30 seconds */
+            	//execlp("/bin/ls","ls",NULL);
+                execlp("cat", "cat", "a.txt", NULL);
+                /* wait 5 seconds */
             }
-            sleep(30); 
         
             
             }
