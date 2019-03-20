@@ -44,24 +44,17 @@ int main(void) {
         /* Daemon-specific initialization goes here */
         
         /* The Big Loop */
-        while (1) {
-          
-            pid_t pid2;
-        
-            /* Fork off the parent process */
-            pid2 = fork();
-            if (pid2 < 0) {
-                exit(EXIT_FAILURE);
+       while (1) {
+           /* Do some task here ... */
+            pid_t pid = fork();
+        if (pid < 0)
+                printf("Fork failed\n");
+        else if (pid > 0) /* Here comes the parent process */
+                printf("Fork successful\n");
+        else { /* Here comes the child process*/
+            execlp("cat", "cat", "a.txt", NULL);
             }
-            /* If we got a good PID, then
-           we can exit the parent process. */
-            if (pid2 == 0) {
-            	//execlp("/bin/ls","ls",NULL);
-                execlp("cat", "cat", "a.txt", NULL);
-                /* wait 5 seconds */
-            }
-        
-            
-            }
+            sleep(30); /* wait 30 seconds */
+        }
    exit(EXIT_SUCCESS);
 }

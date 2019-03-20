@@ -1,0 +1,13 @@
+virtualenv
+jupyter
+tensorflow
+keras
+opencv-python
+numpy
+pandas
+scipy
+scikit-learn
+matplotlib
+imutils
+simplejson
+Pillow
