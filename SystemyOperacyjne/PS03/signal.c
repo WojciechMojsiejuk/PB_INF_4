@@ -12,11 +12,13 @@ void handler(int signum){
         keep_going = 0;
         syslog(LOG_INFO,"Handled signal, now closing program");
     }
-    
+
     }
 
 int main(void){
+    openlog();
     signal(SIGINT, handler);
+    signal(SIGQUIT,handler);
     syslog(LOG_INFO,"Working program");
     while(keep_going)
     {
