@@ -1,10 +1,6 @@
 import random
 import itertools
 
-def switchSides():
-    pass
-def SearchIfSolutionIsCorrect():
-    pass
 all_solutions=[]
 friends=["Karolina", "Magda", "Weronika", "Rafał"," Bartek","Kamil","Justyna","Piotr"]
 places=[]
@@ -36,15 +32,3 @@ for solution in all_solutions:
     print(solution)
 
 print(len(all_solutions))
-'''
-current_solution=dict(zip(set(miejsca),znajomi))
-print(current_solution)
-pierwszy_gospodarz=random.choice(znajomi[6:])
-current_solution[miejsca[3]]=pierwszy_gospodarz
-if current_solution[miejsca[3]]=="Justyna":
-    current_solution[miejsca[8]]=znajomi[6]
-else:
-    current_solution[miejsca[8]]=znajomi[6]
-    '''
-#def SearchSolutionWithRestictions(znajomi,miejsca):
-    #wybor miejsca gospodarza
