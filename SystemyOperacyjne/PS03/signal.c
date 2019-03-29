@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <syslog.h>
+#include <unistd.h>
 
 volatile sig_atomic_t keep_going = 1;
 
@@ -16,7 +17,6 @@ void handler(int signum){
     }
 
 int main(void){
-    openlog();
     signal(SIGINT, handler);
     signal(SIGQUIT,handler);
     syslog(LOG_INFO,"Working program");
@@ -25,6 +25,5 @@ int main(void){
         printf("working...\n");
         sleep(1);
     }
-    closelog();
     return 0;
 }
